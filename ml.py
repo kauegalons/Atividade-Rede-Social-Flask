@@ -29,15 +29,15 @@ def machine_learning(cl,p1, p2, rs):
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=int(rs))
 
     # Escolha do Algoritmo de Machine Learning.
-    if cl == "knn":
-        clf = KNeighborsClassifier(n_neighbors=int(p1))
-    elif cl == "mlp":
-        clf = MLPClassifier(hidden_layer_sizes=(int(p1),), activation=(p2))
-    elif cl == "rf":
-        clf = RandomForestClassifier(n_estimators=int(p1), max_depth=int(p2))
-    elif cl == "dt":
-        clf = DecisionTreeClassifier(criterion=(p1), max_depth=int(p2))
-
+    match cl:
+        case "knn":
+            clf = KNeighborsClassifier(n_neighbors=int(p1))
+        case "mlp":
+            clf = MLPClassifier(hidden_layer_sizes=(int(p1),), activation=(p2))
+        case "rf":
+            clf = RandomForestClassifier(n_estimators=int(p1), max_depth=int(p2))
+        case "dt":
+            clf = DecisionTreeClassifier(criterion=(p1), max_depth=int(p2))
 
 
     # Treinamento do Modelo.
